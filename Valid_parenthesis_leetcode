@@ -1,0 +1,39 @@
+//C++ program to check the valid parenthesis 
+class Solution {
+public:
+    bool isValid(string s) {
+    map<char, char> m{{ ')','('}, {'}', '{'}, {']', '['}};
+    stack<char> bucket;
+    int n = s.size();
+    int count = n/2;
+    if(n % 2 != 0)
+        return false;
+    for(int i = 0; i < n; i++)
+    {
+        if(s[i] == '(' || s[i] == '[' || s[i] == '{')
+        {
+            bucket.push(s[i]);
+            count --;
+        }
+        else
+        {
+            if(bucket.empty() != 1)
+            {
+                if(bucket.top() == m[s[i]])
+                {
+                    bucket.pop();
+                }
+                
+            else 
+                return false;
+            }
+        }
+    }
+        if(bucket.empty() == 1 && count == 0)
+        return true;
+        return false;
+    
+    
+    }
+        
+    };
