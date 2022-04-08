@@ -1,0 +1,57 @@
+class Solution {
+public:
+    int convertTime(string current, string correct) {
+        if(current == correct)
+            return 0;
+        int current_hour = 0, current_minute = 0, correct_hour = 0, correct_minute = 0;
+        string current_hour_s, current_minute_s, correct_hour_s, correct_minute_s;
+        current_hour_s = current.substr(0,2);
+        correct_hour_s = correct.substr(0,2);
+        current_minute_s = current.substr(3,5);
+        correct_minute_s = correct.substr(3,5);
+       
+        //stringstream hardik(current_hour_s);
+        //hardik >> current_hour;
+        current_hour = stoi(current_hour_s);
+        //stringstream hardik1(current_minute_s);
+       // hardik1 >> current_minute;
+        current_minute = stoi(current_minute_s);
+       // stringstream hardik2(correct_hour_s);
+       // hardik2 >> correct_hour;
+        correct_hour = stoi(correct_hour_s);
+        //stringstream hardik3(correct_minute_s);
+        //hardik3 >> correct_minute;
+        correct_minute = stoi(correct_minute_s);
+        int count;
+        int result_hour, result_minute;
+        if(current_minute <= correct_minute)
+            result_minute = correct_minute - current_minute;
+        else
+        {
+            result_minute = 60 - current_minute + correct_minute;
+            correct_hour--;
+        }
+        result_hour = correct_hour - current_hour;
+        count = result_hour;
+        while(result_minute != 0)
+        {
+            if(result_minute >= 15)
+            {
+                result_minute -= 15;
+                count ++;
+            }
+            else if(result_minute >= 5)
+            {
+                result_minute -= 5;
+                count ++;
+            }
+            else if(result_minute >= 1)
+            {
+                result_minute -= 1;
+                count ++;
+            }
+        }
+        return count;
+        
+    }
+};
