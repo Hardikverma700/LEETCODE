@@ -1,0 +1,23 @@
+// c++ solution for the leetcode problem
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        
+       if(target == nums[nums.size() - 1])
+           return nums.size() - 1;
+           int j = 0;
+           for(int i = 0;  i < nums.size() ; i ++)
+           {
+                j = i;
+              // if(nums[i] == target)
+                 //  return i;
+               if(target <= nums[i])
+                   break;
+           }
+        
+        if(target > nums[nums.size() - 1])
+            return nums.size();
+        return j;
+        
+    }
+};
