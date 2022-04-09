@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int size = nums.size();
+        int k = size;
+        queue<int> temp;
+        temp.push(nums[0]);
+        char check = nums[0];
+        for(int i = 1; i < size; i ++)
+        {
+            if(nums[i] == check)
+            {
+                k--;
+            }
+            else
+            {
+                check = nums[i];
+                temp.push(nums[i]);
+            }
+        }
+        for(int i = 0; i < k; temp.pop())
+        {
+            nums[i] = temp.front();
+            i++;
+        }
+        return k;
+        
+    }
+};
